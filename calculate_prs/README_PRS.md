@@ -32,8 +32,6 @@
 
 # Quick Start Guide - PRS Pipeline
 
-## For Standard PRS Analysis
-
 ### 1. Edit Configuration
 ```bash
 vim prs_config.sh  # or your other favorite text editor
@@ -90,11 +88,13 @@ Rscript prs_analysis.R my_prs_analysis phenotype.txt phenotype_column PC1,PC2,PC
 4. **Adjust parameters** if needed
 5. **Run validation** in independent sample
 
----
+# Claude prompt
 
-## Getting Help
+The draft of this repository was written with Claude using this prompt:
 
-1. Check `README.md` for detailed documentation
-2. Review log files for specific errors
-3. Check PLINK2 docs: https://www.cog-genomics.org/plink/2.0/
-4. PRS Tutorial: https://choishingwan.github.io/PRS-Tutorial/
+```
+* Familiarize yourself with the best practices on calculating polygenic risk scores
+* Tell me about the important QC steps
+* Write scripts that use PLINK 2 for calculating polygenic risk scores
+* Make it easy for someone to later adjust files or parameters to do this again
+```
