@@ -1,0 +1,47 @@
+{
+  "merge_settings": {
+    "columns_to_try": ["IID"]
+  },
+  "filter_steps": [
+    {
+      "name": "population_filter",
+      "enabled": true,
+      "settings": {
+        "column_name": "Race",
+        "allowed_populations": ["Caucasian"],
+        "required": false
+      }
+    },
+    {
+      "name": "case_control_definition",
+      "enabled": true,
+      "settings": {
+        "control_criteria": {
+          "SCZ_general": 0
+        },
+        "case_criteria": {
+          "SCZ_general": 1
+        }
+      }
+    },
+    {
+      "name": "quality_filter",
+      "enabled": false,
+      "settings": {
+        "min_call_rate": 0.95,
+        "column_name": "call_rate"
+      }
+    }
+  ],
+  "principal_components": {
+    "min_required": 20,
+    "pattern": "^PC(_[A-Z]{3})?[0-9]+$"
+  },
+  "prs_files": {
+    "input_type": "directory",
+    "path": "/scratch/users/benson97/SCZ_PRS",
+    "file_pattern": "*.sscore",
+    "score_column": "SCORE1_AVG",
+    "id_column": "IID"
+  }
+}

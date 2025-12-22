@@ -1,0 +1,67 @@
+{
+  "examples": {
+    "directory_mode": {
+      "description": "Load all .sscore files from a directory (recommended for C+T analysis)",
+      "config": {
+        "prs_files": {
+          "input_type": "directory", 
+          "path": "prs_results/",
+          "file_pattern": "*.sscore",
+          "score_column": "SCORE1_AVG",
+          "id_column": "IID"
+        }
+      }
+    },
+    "single_file_mode": {
+      "description": "Load a single PRS file",
+      "config": {
+        "prs_files": {
+          "input_type": "file",
+          "path": "my_prs.sscore", 
+          "score_column": "SCORE1_AVG",
+          "id_column": "IID"
+        }
+      }
+    },
+    "multiple_populations": {
+      "description": "Include multiple populations in analysis",
+      "config": {
+        "filter_steps": [
+          {
+            "name": "population_filter",
+            "enabled": true,
+            "settings": {
+              "column_name": "ancestry",
+              "allowed_populations": ["EUR", "AFR", "EAS", "AMR"],
+              "required": false
+            }
+          }
+        ]
+      }
+    },
+    "custom_case_control": {
+      "description": "Custom case/control definition for different phenotypes",
+      "config": {
+        "filter_steps": [
+          {
+            "name": "case_control_definition", 
+            "enabled": true,
+            "settings": {
+              "control_criteria": {
+                "diabetes": 0,
+                "heart_disease": 0
+              },
+              "case_criteria": {
+                "logic": "OR",
+                "conditions": [
+                  {"diabetes": 1},
+                  {"heart_disease": 1}
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
